@@ -17,12 +17,9 @@ jobs:
       - name: Install & Build Web
         run: |
           npm install --force
-          # Vite বিল্ড চালানো যা অটোমেটিক 'dist' তৈরি করে
           npx vite build || npm run build
-          # যদি কোনো কারণে dist না থাকে তবে ম্যানুয়ালি তৈরি করা
           mkdir -p dist
-          if [ -f index.html ]; then cp index.html dist/; fi
-          if [ -d assets ]; then cp -r assets dist/; fi
+          [ -f index.html ] && cp index.html dist/ || true
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -32,7 +29,8 @@ jobs:
 
       - name: Build Android APK
         run: |
-          # webDir: dist সিঙ্ক করা
+          # যদি অ্যান্ড্রয়েড ফোল্ডার না থাকে তবে তা তৈরি করা
+          if [ ! -d "android" ]; then npx cap add android; fi
           npx cap sync android
           cd android
           chmod +x gradlew
