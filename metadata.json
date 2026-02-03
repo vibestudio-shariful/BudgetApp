@@ -1,0 +1,5 @@
+{
+  "name": "Personal Finance Manager",
+  "description": "A comprehensive finance tracker with income/expense management, debt tracking, history, and localization support for English and Bengali.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,7 @@
+
+{
+  "appId": "com.shariful.financemanager",
+  "appName": "Finance Manager",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
